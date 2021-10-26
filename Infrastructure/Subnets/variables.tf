@@ -1,0 +1,10 @@
+variable "vpc_id" {}
+variable "subnet_cidr" {}
+variable "availability_zone" {}
+variable "route_table_id" {}
+variable "pri_route_table_id" {}
+variable "internet_gate" {}
+variable "cidr_pri1" {}
+variable "cidr_pri2" {}
+variable "av_zone_pri1" {}
+variable "av_zone_pri2" {}
