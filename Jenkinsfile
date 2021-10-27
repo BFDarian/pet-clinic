@@ -23,7 +23,7 @@ pipeline{
             stage('Kubernetes Setup'){
                 steps{
                     script{
-                        sh "sudo su - jenkins && cd kubernetes && kubectl apply -f ."
+                        sh "cd kubernetes && kubectl apply -f ."
                     }
                 }
             }
