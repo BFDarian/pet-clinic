@@ -23,7 +23,7 @@ pipeline{
             stage('Kubernetes Setup'){
                 steps{
                     script{
-                        sh "cd kubernetes && kubectl apply -f ."
+                        sh "cd kubernetes && ls -al && kubectl apply -f ."
                     }
                 }
             }
