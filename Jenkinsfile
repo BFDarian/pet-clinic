@@ -7,8 +7,7 @@ pipeline{
         stages{
             stage('Docker Login'){
                 steps{
-                    sh "docker login -u $username -p $password "
-                    }
+                    sh 'docker login -u ${"username"} -p ${"password"} '
                 }
             }
             stage('Tag & Push Image'){
