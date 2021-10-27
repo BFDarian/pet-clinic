@@ -1,10 +1,13 @@
 pipeline{
         agent any
+        environment {
+            username = credentials('username')
+            password = credentials('password')
+        }
         stages{
             stage('Docker Login'){
                 steps{
-                    script{
-                        docker.withRegistry('https://registry.hub.docker.com/', 'docker-hub-credentials')
+                    sh "docker login -u $username -p $password "
                     }
                 }
             }
