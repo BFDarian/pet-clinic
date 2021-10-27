@@ -1,2 +1,1 @@
 # pet-clinic
-## Team C
