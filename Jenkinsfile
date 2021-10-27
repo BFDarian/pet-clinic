@@ -2,8 +2,8 @@ pipeline{
         agent any
         environment {
             app_version = 'v1'
-            // username = credentials('username')
-            // password = credentials('password')
+            username = credentials('username')
+            password = credentials('password')
         }
         stages{
             stage('Docker Login'){
