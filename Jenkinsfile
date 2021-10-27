@@ -12,7 +12,7 @@ pipeline{
             }
             stage('Tag & Push Image'){
                 steps{
-                    sh "cd pet-clinic/ && docker-compose build && docker compose push"
+                    sh "cd pet-clinic && docker-compose build && docker compose push"
                 }
             }
             stage('Deploy App'){
