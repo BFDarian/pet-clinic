@@ -22,7 +22,11 @@ pipeline{
             }
             stage('Kubernetes Setup'){
                 steps{
-                    sh "cd kubernetes && kubectl apply -f ."
+                    script{
+                        withKubeConfig([credentialsId: 'root', serverUrl: 'https://E1045E516BAB8BB936D9F4188FA7ABC8.sk1.eu-west-1.eks.amazonaws.com']) {
+                        sh "cd kubernetes && kubectl apply -f ."
+                        }    
+                    }
                 }
             }
             stage('Get load-balance IP'){
