@@ -1,19 +1,18 @@
 pipeline{
         agent any
         environment {
-            app_version = 'v1'
             username = credentials('username')
             password = credentials('password')
         }
         stages{
             stage('Docker Login'){
                 steps{
-                    sh 'docker login -u "{env.username}" -p "{env.password}" '
+                    sh 'docker login -u $username -p $password'
                 }
             }
             stage('Tag & Push Image'){
                 steps{
-                    sh "docker-compose build && docker compose push"
+                    sh "ls && docker-compose build && docker-compose push"
                 }
             }
             stage('Deploy App'){
