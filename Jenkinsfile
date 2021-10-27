@@ -8,7 +8,9 @@ pipeline{
         stages{
             stage('Docker Login'){
                 steps{
-                    sh 'docker login -u "${env.username}" -p "${env.password}" '
+                    script{
+                        docker.withRegistry('https://registry.hub.docker.com/', 'docker-hub-credentials')
+                    }
                 }
             }
             stage('Tag & Push Image'){
