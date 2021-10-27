@@ -1,13 +1,13 @@
 pipeline{
         agent any
         environment {
-            username = credentials('username')
-            password = credentials('password')
+            // username = credentials('username')
+            // password = credentials('password')
         }
         stages{
             stage('Docker Login'){
                 steps{
-                    sh 'docker login -u ${"username"} -p ${"password"} '
+                    sh 'docker login -u $username -p $password '
                 }
             }
             stage('Tag & Push Image'){
