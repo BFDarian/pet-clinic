@@ -12,7 +12,7 @@ pipeline{
             }
             stage('Tag & Push Image'){
                 steps{
-                    sh "ls && docker-compose build && docker compose push"
+                    sh "ls && docker-compose build && docker-compose push"
                 }
             }
             stage('Deploy App'){
