@@ -24,7 +24,12 @@ module "Subnets" {
   av_zone_pri2       = "eu-west-1c"
   cidr_pri1          = "10.0.2.0/24"
   cidr_pri2          = "10.0.3.0/24"
-  
+  cidr_eks1          = "10.0.4.0/24"
+  cidr_eks2          = "10.0.5.0/24"
+  cidr_eks3          = "10.0.6.0/24"
+  eks_azs1           = "eu-west-1a"
+  eks_azs2           = "eu-west-1b"
+  eks_azs3           = "eu-west-1c"
 }
 
 module "EC2" {
@@ -42,15 +47,16 @@ module "EC2" {
   subnet_group_name      = module.Subnets.subnet_group_name
   db_instance_class      = "db.t3.micro"
   initial_db_name        = "petClinic"
+  
 }
 
 module "EKS" {
   source = "./EKS"
 
-  subnet_id_pub  = module.Subnets.subnet_id_pub
-  subnet_id_pri1 = module.Subnets.subnet_id_pri1
-  subnet_id_pri2 = module.Subnets.subnet_id_pri2
+  subnet_id_eks1 = module.Subnets.subnet_id_eks1
+  subnet_id_eks2 = module.Subnets.subnet_id_eks2
+  subnet_id_eks3 = module.Subnets.subnet_id_eks3
   instance_type  = "t2.small"
-  vpc_id = module.VPC.vpc_id
+  
 
 }

@@ -7,6 +7,15 @@ output "subnet_id_pri1" {
 output "subnet_id_pri2" {
   value = aws_subnet.pri2.id
 }
+output "subnet_id_eks1" {
+  value = aws_subnet.eks_pub_1.id
+}
+output "subnet_id_eks2" {
+  value = aws_subnet.eks_pub_2.id
+}
+output "subnet_id_eks3" {
+  value = aws_subnet.eks_pub_3.id
+}
 output "security_group" {
   value = aws_security_group.allow_ssh.id
 }

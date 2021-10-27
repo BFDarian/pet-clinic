@@ -8,3 +8,9 @@ variable "cidr_pri1" {}
 variable "cidr_pri2" {}
 variable "av_zone_pri1" {}
 variable "av_zone_pri2" {}
+variable "cidr_eks1" {}
+variable "cidr_eks2" {}
+variable "cidr_eks3" {}
+variable "eks_azs1" {}
+variable "eks_azs2" {}
+variable "eks_azs3" {}
