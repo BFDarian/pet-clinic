@@ -7,12 +7,12 @@ pipeline{
         stages{
             stage('Docker Login'){
                 steps{
-                    sh 'docker login -u $username -p $password '
+                    sh 'docker login -u $username -p $password'
                 }
             }
             stage('Tag & Push Image'){
                 steps{
-                    sh "docker-compose build && docker compose push"
+                    sh "cd pet-clinic/ && docker-compose build && docker compose push"
                 }
             }
             stage('Deploy App'){
