@@ -3,6 +3,7 @@ resource "aws_instance" "host" {
   instance_type     = var.instance_type
   key_name          = var.key_name
   availability_zone = var.availability_zone
+  user_data         = "${file("install.sh")}"
 
   network_interface {
     network_interface_id = aws_network_interface.prod.id

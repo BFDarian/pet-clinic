@@ -30,7 +30,7 @@ module "Subnets" {
 module "EC2" {
   source = "./EC2"
 
-  instance_type          = "t2.micro"
+  instance_type          = "t2.medium"
   ami                    = "ami-0a8e758f5e873d1c1"
   key_name               = "id_rsa"
   availability_zone      = "eu-west-1a"
