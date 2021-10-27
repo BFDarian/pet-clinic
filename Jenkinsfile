@@ -23,7 +23,7 @@ pipeline{
             stage('Kubernetes Setup'){
                 steps{
                     script{
-                        sh "cd kubernetes && ls -al && kubectl apply -f ."
+                        sh "cd kubernetes && ls -al && kubectl apply -f frontend.yaml && kubectl apply -f backend.yaml && kubectl apply -f nginx.yaml"
                     }
                 }
             }
