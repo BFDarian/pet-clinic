@@ -23,6 +23,23 @@
 
 Before attempting to run
 
+## Terraform
+
+The Terraform deployment will consist of:
+
+- 1 VPC 
+- 1 Public Subnet hosting an EC2 instance
+- 2 Private Subnets hosting the RDS instance
+- 3 Private Subnets hosting the EKS cluster
+- 1 Internet Gateway
+- 1 NAT Gateway
+- Route Tables for each of the subnets
+- 1 EKS Cluster containing 1 Auto-Scaling Worker Node Group
+- 1 EC2 instance hosting the deployment stage
+- 1 RDS instance
+
+![Terraform-Model](https://github.com/BFDarian/pet-clinic/blob/documentation/images/Terraform-model.JPG)
+
 ## Instructions ##  
 
 ### Containerisation ###  
