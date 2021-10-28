@@ -22,7 +22,6 @@ module "eks" {
       instance_type                 = "t2.small"
       asg_desired_capacity          = 2
       additional_security_group_ids = [var.security_group]
-    },
-    
+    }, 
   ]
 }
