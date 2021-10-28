@@ -1,6 +1,6 @@
 # Pet-Clinic Deployment
 
-This repository contains the necessary files to run a web app in the cloud.
+<Intro piece>
 
 ## Contents
 - [Technologies](#Technologies)
@@ -25,13 +25,12 @@ Before attempting to run
 
 ## Instructions
 
-Containerisation Docker aids in the creation of local development environments. In this case is is neccessary to create more than one container for the application; rest angular and nginx containerised using several Docker files. 
-
+- Containerisation
+Docker aids in the creation of local development environments. In this case is is neccessary to create more than one container for the application; rest angular and nginx containerised using several Docker files. 
 A creation of a new docker angular container was essential in order to connect the backend and front end of the application using an njinx reverse proxy to route data to and from a private datastore to a desired open internet port/web app.
-The creation of a docker Compose doccument allowing you to use a YAML files to operate multi-container applications at once was paramount. With this, we had set the desired amount of 
+The creation of a docker Compose doccument allowing you to use a YAML files to operate multi-container applications at once was paramount. with this, we had set the desired amount of 
 containers counts, their builds, and storage designs, and then with a single set of commands we build, run and configure all the containers.
-
-These containers will be pulled and accessed via our jenkins webhook in order to automate the task.
+these containers will be pulled and accessed via our jenkins webhook in order to automate the task.
 
 - install.sh
 within the terraform ec2 module, a call is made to run the required .sh script
@@ -41,14 +40,18 @@ this includes:
 
 docker is installed and is needed inorder to run kubectl for the connection between kubernetees
 
-docker compose must be installed inorder to docker-compose up and run the application
+![docker-install](docker-install.png)
 
+Compose is a seperate tool from Docker, so Docker compose must be installed inorder to docker-compose up and run the application
+![docker-compose-install](docker-compose-install.png)
+![docker-compose-up-product](docker-compose-up-product.png)
 kubectl is pulled and installed onto the machine inorder for the jenkins pipeline to be able to execute kubernetes scripts
-
+![kubectl-install](kubectl-install.png)
 Docker and kubectle is then setup 
-
+![docker-kube-setup](docker-kube-setup.png)
 jenkins is then installed onto the ec2
 jenkins user is created with the dependancies and initial password stored in secrets
+![jenkins-setup](jenkins-setup.png)
 
 jenkins will run the docker compose from the docker compose within the registry pulled down from git
 
