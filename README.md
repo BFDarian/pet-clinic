@@ -23,16 +23,16 @@
 
 Before attempting to run
 
-## Instructions
+## Instructions ##  
 
-- Containerisation  
+### Containerisation ###  
 Docker aids in the creation of local development environments. In this case is is neccessary to create more than one container for the application; rest angular and nginx containerised using several Docker files. 
 A creation of a new docker angular container was essential in order to connect the backend and front end of the application using an njinx reverse proxy to route data to and from a private datastore to a desired open internet port/web app.
 The creation of a docker Compose doccument allowing you to use a YAML files to operate multi-container applications at once was paramount. with this, we had set the desired amount of 
 containers counts, their builds, and storage designs, and then with a single set of commands we build, run and configure all the containers.
 these containers will be pulled and accessed via our jenkins webhook in order to automate the task.
 
-- install.sh  
+### install.sh ###  
 Within the terraform ec2 module, a call is made to run the required .sh script
 The install.sh script runs the necessacy commads on the created ec2 instance allowing for the automated installation of the needed technologies including these steps:  
 
