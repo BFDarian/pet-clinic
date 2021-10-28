@@ -5,7 +5,9 @@ resource "aws_subnet" "pub" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "Pub"
+    Name                                          = "Pub"
+    "kubernetes.io/cluster/example" = "shared"
+    "kubernetes.io/role/elb"                      = "1"
   }
 }
 
@@ -15,7 +17,9 @@ resource "aws_subnet" "pri1" {
   availability_zone = var.av_zone_pri1
 
   tags = {
-    Name = "Private"
+    Name = "Private 1"
+    "kubernetes.io/cluster/example" = "shared"
+    "kubernetes.io/role/internal-elb"             = "1"
   }
 }
 
@@ -25,7 +29,9 @@ resource "aws_subnet" "pri2" {
   availability_zone = var.av_zone_pri2 
 
   tags = {
-    Name = "Private"
+    Name = "Private 2"
+    "kubernetes.io/cluster/example" = "shared"
+    "kubernetes.io/role/internal-elb"             = "1"
   }
 }
 
@@ -36,15 +42,12 @@ resource "aws_subnet" "eks_pub_1" {
   availability_zone = var.eks_azs1
   map_public_ip_on_launch = true
 
-  tags = {
-    Name = "EKS Pub"
-  }
+
 }
 resource "aws_subnet" "eks_pub_2" {
   vpc_id     = var.vpc_id
   cidr_block = var.cidr_eks2
   availability_zone = var.eks_azs2
-  map_public_ip_on_launch = true
 
   tags = {
     Name = "EKS Pub"
@@ -54,7 +57,6 @@ resource "aws_subnet" "eks_pub_3" {
   vpc_id     = var.vpc_id
   cidr_block = var.cidr_eks3
   availability_zone = var.eks_azs3
-  map_public_ip_on_launch = true
 
   tags = {
     Name = "EKS Pub"

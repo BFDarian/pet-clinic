@@ -53,10 +53,11 @@ module "EC2" {
 module "EKS" {
   source = "./EKS"
 
-  subnet_id_eks1 = module.Subnets.subnet_id_eks1
-  subnet_id_eks2 = module.Subnets.subnet_id_eks2
-  subnet_id_eks3 = module.Subnets.subnet_id_eks3
+  subnet_id_pub = module.Subnets.subnet_id_pub
+  subnet_id_pri1 = module.Subnets.subnet_id_pri1
+  subnet_id_pri2 = module.Subnets.subnet_id_pri2
   instance_type  = "t2.small"
+  
   
 
 }
