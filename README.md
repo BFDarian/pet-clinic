@@ -1,10 +1,10 @@
 # Pet-Clinic Deployment
 
-This repository allows for the deployment of a website front-end and back-end on resources provisioned on the cloud. 
-
+<Intro piece>
 
 ## Contents
 - [Technologies](#Technologies)
+- [Prerequisites](#Prerequisites)
 - [Instructions](#Instructions)
 - [Planning](#Planning)
 - [Risk Assessment](#Risk-Assessment)
@@ -19,7 +19,26 @@ This repository allows for the deployment of a website front-end and back-end on
  - Docker
  - Kubernetes
 
+## Prerequisites
 
+Before attempting to run
+
+## Terraform
+
+The Terraform deployment will consist of:
+
+- 1 VPC 
+- 1 Public Subnet hosting an EC2 instance
+- 2 Private Subnets hosting the RDS instance
+- 3 Private Subnets hosting the EKS cluster
+- 1 Internet Gateway
+- 1 NAT Gateway
+- Route Tables for each of the subnets
+- 1 EKS Cluster containing 1 Auto-Scaling Worker Node Group
+- 1 EC2 instance hosting the deployment stage
+- 1 RDS instance
+
+![Terraform-Model](https://github.com/BFDarian/pet-clinic/blob/documentation/images/Terraform-model.JPG)
 
 ## Instructions ##  
 
@@ -59,22 +78,10 @@ Jenkins is then installed onto the ec2 and jenkins user is created with the depe
 
 Jenkins will run the docker compose from the docker compose within the registry pulled down from git, if any changes are made the webhook will activate and update the docker images and run those changed containers  
 
-## Terraform
 
-The Terraform deployment will consist of:
+### Kubernetes ###
 
-- 1 VPC 
-- 1 Public Subnet hosting an EC2 instance
-- 2 Private Subnets hosting the RDS instance
-- 3 Private Subnets hosting the EKS cluster
-- 1 Internet Gateway
-- 1 NAT Gateway
-- Route Tables for each of the subnets
-- 1 EKS Cluster containing 1 Auto-Scaling Worker Node Group
-- 1 EC2 instance hosting the deployment stage
-- 1 RDS instance
-
-![Terraform-Model](https://github.com/BFDarian/pet-clinic/blob/documentation/images/Terraform-model.JPG)
+For the creation of the eks cluser we used Terraform to initialise and build it within aws. The cluser we created had two worker nodes that would contain the pods for the application. For the application an nginx Load balancer was used with two seperate cluserIP deployments, one for the frontend and one for the backend. From the nginx.yaml file we use a reverse proxy to manage the incoming traffic and distribute the data to the correct container. The frontend and backend retrieve their respect images from dockerhub and become accessible on their specified ports.
 
 ### Jenkins ###
 
@@ -136,6 +143,21 @@ steps {
     sleep time: 180, unit: 'SECONDS'
     sh "kubectl get services"
 }
+```
+
+### Jenkins vm setup
+First to retireve the jenkins intialAdminPassword you must ssh on to the vm and from there follow these steps:
+```
+1. sudo su jenkins
+2. cd ..
+3. cat jenkins/.jenkins/secrets/initialAdminPassword
+```
+
+Afterwards you then need to do aws configure and enter the credentials. 
+
+Then finally do 
+```
+aws eks --region eu-west-1 update-kubeconfig --name cluster
 ```
 ---
 
