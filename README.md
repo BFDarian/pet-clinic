@@ -61,6 +61,69 @@ Jenkins is then installed onto the ec2 and jenkins user is created with the depe
 
 Jenkins will run the docker compose from the docker compose within the registry pulled down from git, if any changes are made the webhook will activate and update the docker images and run those changed containers  
 
+### Jenkins ###
+
+The processes of creating a CI pipeline in our project was done through the Jenkins VM Container. Inside this machine, we set up Jenkins with an admin and password, and then set up a pipeline job to run our Jenkinsfile. The setup of this was done manually, though attempted automatically with the use of shellscript.  
+
+When in the Jenkins vm, certain credentials where necessary to create the job successfully. With the use of the Docker credentials, we could change an image and push the new image to Dockerhub. We also needed to set up the 'sudo su' command to change permissions, both on obtaining the 'initialadminpassword' for Jenkins, and also to be able to run the configure file and set up Keys for access to AWS.  
+
+Our initial environment variables where to contain the docker login credentials on the Jenkins VM, this has been done to be recognised within our log in shellscript.  
+
+```
+pipeline{
+    agent any
+    environment {
+        app_version = 'v1'
+        username = credentials('username')
+        password = credentials('password')
+```
+---
+Our Jenkinsfile was broken up into 5 stages which where run through on the build of the Jenkins job.
+
+1. First we had to set up the login to docker for access to the images.
+```}
+stages{
+    stage('Docker Login'){
+        steps{
+            sh 'docker login -u "{env.username}" -p "{env.password}" '
+        }
+    }
+```
+2. Then was the initial build and push up to Dockerhub for any updates done to the container images.
+```
+
+stage('Tag & Push Image'){
+    steps{
+        sh "docker-compose build && docker compose push"
+        }
+    }
+```
+3. This stage deploys the docker-compose containers.
+``` 
+stage('Deploy App'){
+steps{
+    sh "docker-compose up -d"
+}
+```
+4. Next is to locate the filepath within the repository and at the layer of Kubernetes, deploy the EKS cluster and pods.
+```
+}
+stage('Kubernetes Setup'){
+steps{
+    sh "cd kubernetes && kubectl apply -f ."
+}
+```
+5. Once this section is done, there is then a set time for the step to wait before retrieving this information, as it will take time to spin up and give the necessary IP address to locate our application on port 80.
+```
+}
+stage('Get load-balance IP'){
+steps {
+    sleep time: 180, unit: 'SECONDS'
+    sh "kubectl get services"
+}
+```
+---
+
 
 ## Planning
  Trello board
