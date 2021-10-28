@@ -20,7 +20,7 @@ services:
       build: ./spring-petclinic-angular
       ports:
         - target: 8080
-          published: 8080
+          published: 8081
   
     backend:
       container_name: backend
