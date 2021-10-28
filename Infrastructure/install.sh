@@ -1,14 +1,26 @@
 #!/bin/bash
-#kubectl install
+##docker install
 sudo apt-get update
 sudo apt install curl -y
 curl https://get.docker.com/ | sudo bash
+
+##docker-compose install
+sudo apt install -y curl jq
+# set which version to download (latest)
+version=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r '.tag_name')
+# download to /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/${version}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# make the file executable
+sudo chmod +x /usr/local/bin/docker-compose
+
+##kubectl install
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz"| tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
 curl -LO https://storage.googleapis.com/kubernetes-release/release/%60curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt%60/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
-#kubectl install~2
+
+##kubectl install~2
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 sudo apt install -y unzip
@@ -18,7 +30,7 @@ sudo ./aws/install
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz"| tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
 
-#install jenkins
+##install jenkins
 if type apt > /dev/null; then
     pkg_mgr=apt
     java="openjdk-8-jre"
