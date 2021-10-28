@@ -1,10 +1,10 @@
 # Pet-Clinic Deployment
 
-<Intro piece>
+This repository allows for the deployment of a website front-end and back-end on resources provisioned on the cloud. 
+
 
 ## Contents
 - [Technologies](#Technologies)
-- [Prerequisites](#Prerequisites)
 - [Instructions](#Instructions)
 - [Planning](#Planning)
 - [Risk Assessment](#Risk-Assessment)
@@ -19,9 +19,6 @@
  - Docker
  - Kubernetes
 
-## Prerequisites
-
-Before attempting to run
 
 
 ## Instructions ##  
