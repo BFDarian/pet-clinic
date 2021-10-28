@@ -43,6 +43,7 @@ resource "aws_subnet" "eks_pub_1" {
   
 
 
+
 }
 resource "aws_subnet" "eks_pub_2" {
   vpc_id     = var.vpc_id
