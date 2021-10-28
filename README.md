@@ -5,7 +5,6 @@ This repository allows for the deployment of a website front-end and back-end on
 
 ## Contents
 - [Technologies](#Technologies)
-- [Prerequisites](#Prerequisites)
 - [Instructions](#Instructions)
 - [Planning](#Planning)
 - [Risk Assessment](#Risk-Assessment)
@@ -20,9 +19,6 @@ This repository allows for the deployment of a website front-end and back-end on
  - Docker
  - Kubernetes
 
-## Prerequisites
-
-Before attempting to run
 
 ## Terraform
 
