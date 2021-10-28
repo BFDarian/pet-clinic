@@ -60,7 +60,7 @@ WantedBy=multi-user.target
 EOF
 sudo systemctl daemon-reload
 sudo systemctl enable jenkins
-sudo usermod -aG docker $(jenkins)
+sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
 sudo su - jenkins << EOF
 until [ -f .jenkins/secrets/initialAdminPassword ]; do
