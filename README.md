@@ -127,11 +127,11 @@ steps {
 
 ## Planning
  Trello board
-
+![Trello-board](https://github.com/BFDarian/pet-clinic/blob/documentation/images/TrelloBoard.png)
 
 
 ## Risk Assessment
-
+![Risk Assessment](https://github.com/BFDarian/pet-clinic/blob/documentation/images/Risk_assessment.png)
 
 
  ## Contributors
