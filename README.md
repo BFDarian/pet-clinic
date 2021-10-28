@@ -150,6 +150,9 @@ steps {
 ## Risk Assessment
 ![Risk Assessment](https://github.com/BFDarian/pet-clinic/blob/documentation/images/Risk_assessment.png)
 
+## Burn Down Chart
+![Burn-Down-Chart](https://github.com/BFDarian/pet-clinic/blob/documentation/images/Burn-Down-Chart.JPG)
+
 
  ## Contributors
 This project was put together by [Abel](https://github.com/MrLucien-Johnson), [Ben](https://github.com/BFDarian), [Luis](https://github.com/LSoares1), [Sean](https://github.com/Arcticleech) and [Rob](https://github.com/mauvesky1)
