@@ -22,7 +22,9 @@ pipeline{
             }
             stage('Kubernetes Setup'){
                 steps{
-                    sh "cd kubernetes && kubectl apply -f ."
+                    script{
+                        sh "cd kubernetes && kubectl apply -f ."
+                    }
                 }
             }
             stage('Get load-balance IP'){
