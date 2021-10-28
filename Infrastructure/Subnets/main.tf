@@ -36,15 +36,12 @@ resource "aws_subnet" "eks_pub_1" {
   availability_zone = var.eks_azs1
   map_public_ip_on_launch = true
 
-  tags = {
-    Name = "EKS Pub"
-  }
+
 }
 resource "aws_subnet" "eks_pub_2" {
   vpc_id     = var.vpc_id
   cidr_block = var.cidr_eks2
   availability_zone = var.eks_azs2
-  map_public_ip_on_launch = true
 
   tags = {
     Name = "EKS Pub"
@@ -54,7 +51,6 @@ resource "aws_subnet" "eks_pub_3" {
   vpc_id     = var.vpc_id
   cidr_block = var.cidr_eks3
   availability_zone = var.eks_azs3
-  map_public_ip_on_launch = true
 
   tags = {
     Name = "EKS Pub"
