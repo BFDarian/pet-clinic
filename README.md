@@ -40,18 +40,18 @@ this includes:
 
 docker is installed and is needed inorder to run kubectl for the connection between kubernetees
 
-![docker-install](docker-install.png)
+![docker-install](images/docker-install.png)
 
 Compose is a seperate tool from Docker, so Docker compose must be installed inorder to docker-compose up and run the application
-![docker-compose-install](docker-compose-install.png)
-![docker-compose-up-product](docker-compose-up-product.png)
+![docker-compose-install](images/docker-compose-install.png)
+![docker-compose-up-product](images/docker-compose-up-product.png)
 kubectl is pulled and installed onto the machine inorder for the jenkins pipeline to be able to execute kubernetes scripts
-![kubectl-install](kubectl-install.png)
+![kubectl-install](images/kubectl-install.png)
 Docker and kubectle is then setup 
-![docker-kube-setup](docker-kube-setup.png)
+![docker-kube-setup](images/docker-kube-setup.png)
 jenkins is then installed onto the ec2
 jenkins user is created with the dependancies and initial password stored in secrets
-![jenkins-setup](jenkins-setup.png)
+![jenkins-setup](images/jenkins-setup.png)
 
 jenkins will run the docker compose from the docker compose within the registry pulled down from git
 
