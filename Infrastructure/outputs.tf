@@ -7,7 +7,3 @@ output "DB_Public_IP" {
   value       = module.EC2.db_endpoint
 }
 
-output "cluster_endpoint" {
-  description = "Endpoint for EKS control plane."
-  value       = module.EKS.endpoint
-}

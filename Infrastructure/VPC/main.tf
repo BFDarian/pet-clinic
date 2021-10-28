@@ -3,6 +3,7 @@ resource "aws_vpc" "terra_vpc" {
 
   tags = {
     Name = "production"
+    "kubernetes.io/cluster/example" = "shared"
   }
 }
 

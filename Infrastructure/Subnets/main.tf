@@ -5,7 +5,9 @@ resource "aws_subnet" "pub" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "Pub"
+    Name                                          = "Pub"
+    "kubernetes.io/cluster/example" = "shared"
+    "kubernetes.io/role/elb"                      = "1"
   }
 }
 
@@ -15,7 +17,9 @@ resource "aws_subnet" "pri1" {
   availability_zone = var.av_zone_pri1
 
   tags = {
-    Name = "Private"
+    Name = "Private 1"
+    "kubernetes.io/cluster/example" = "shared"
+    "kubernetes.io/role/internal-elb"             = "1"
   }
 }
 
@@ -25,7 +29,9 @@ resource "aws_subnet" "pri2" {
   availability_zone = var.av_zone_pri2 
 
   tags = {
-    Name = "Private"
+    Name = "Private 2"
+    "kubernetes.io/cluster/example" = "shared"
+    "kubernetes.io/role/internal-elb"             = "1"
   }
 }
 
@@ -34,7 +40,8 @@ resource "aws_subnet" "eks_pub_1" {
   vpc_id     = var.vpc_id
   cidr_block = var.cidr_eks1
   availability_zone = var.eks_azs1
-  map_public_ip_on_launch = true
+  
+
 
 
 }
@@ -58,7 +65,7 @@ resource "aws_subnet" "eks_pub_3" {
 }
 
 resource "aws_db_subnet_group" "private" {
-  name       = "rds"
+  name       = "rds "
   subnet_ids = [aws_subnet.pri1.id, aws_subnet.pri2.id]
 
   tags = {
@@ -67,7 +74,7 @@ resource "aws_db_subnet_group" "private" {
 }
 
 resource "aws_db_subnet_group" "eks_subnet_group" {
-  name       = "eks"
+  name       = "eks "
   subnet_ids = [aws_subnet.eks_pub_1.id, aws_subnet.eks_pub_2.id, aws_subnet.eks_pub_2.id]
 
   tags = {
