@@ -4,6 +4,12 @@ provider "aws" {
   secret_key = var.secret_key
 }
 
+# provider "kubernetes" {  
+#   host = data.aws_eks_cluster.cluster.endpoint  
+#   token = data.aws_eks_cluster_auth.cluster.token  
+#   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority[0].data)
+# }
+
 module "VPC" {
   source = "./VPC"
 
@@ -50,17 +56,40 @@ module "EC2" {
   
 }
 
-module "EKS" {
-  source = "./EKS"
+# module "EKS" {
+#   source = "./EKS"
 
 
-  subnet_id_eks_pub_1 = module.Subnets.subnet_id_eks1
-  subnet_id_eks_pub_2 = module.Subnets.subnet_id_eks2
-  subnet_id_eks_pub_3 = module.Subnets.subnet_id_eks3
+#   subnet_id_eks_pub_1 = module.Subnets.subnet_id_eks1
+#   subnet_id_eks_pub_2 = module.Subnets.subnet_id_eks2
+#   subnet_id_eks_pub_3 = module.Subnets.subnet_id_eks3
 
-  instance_type  = "t2.small"
-  vpc_id = module.VPC.vpc_id
-  security_group = module.Subnets.security_group
+#   instance_type  = "t2.small"
+#   vpc_id = module.VPC.vpc_id
+#   security_group = aws_security_group.worker_group_mgmt_one.id
   
 
-}
+# }
+
+# data "aws_eks_cluster" "cluster" {
+#   name = module.EKS.cluster_id
+# }
+
+# data "aws_eks_cluster_auth" "cluster" {
+#   name = module.EKS.cluster_id
+# }
+
+# resource "aws_security_group" "worker_group_mgmt_one" {
+#   name_prefix = "worker_group_mgmt_one"
+#   vpc_id      = module.VPC.vpc_id
+
+#   ingress {
+#     from_port = 22
+#     to_port   = 22
+#     protocol  = "tcp"
+
+#     cidr_blocks = [
+#       "10.0.0.0/8",
+#     ]
+#   }
+# }

@@ -6,7 +6,7 @@ resource "aws_subnet" "pub" {
 
   tags = {
     Name                                          = "Pub"
-    "kubernetes.io/cluster/example" = "shared"
+    "kubernetes.io/cluster/cluster" = "shared"
     "kubernetes.io/role/elb"                      = "1"
   }
 }
@@ -18,7 +18,7 @@ resource "aws_subnet" "pri1" {
 
   tags = {
     Name = "Private 1"
-    "kubernetes.io/cluster/example" = "shared"
+    "kubernetes.io/cluster/cluster" = "shared"
     "kubernetes.io/role/internal-elb"             = "1"
   }
 }
@@ -30,7 +30,7 @@ resource "aws_subnet" "pri2" {
 
   tags = {
     Name = "Private 2"
-    "kubernetes.io/cluster/example" = "shared"
+    "kubernetes.io/cluster/cluster" = "shared"
     "kubernetes.io/role/internal-elb"             = "1"
   }
 }
