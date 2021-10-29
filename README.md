@@ -38,7 +38,7 @@ The Terraform deployment will consist of:
 - 1 EC2 instance hosting the deployment stage
 - 1 RDS instance
 
-![Terraform-Model](https://github.com/BFDarian/pet-clinic/blob/documentation/images/Terraform-model.JPG)
+![Terraform-Model](https://github.com/BFDarian/pet-clinic/blob/main/images/Terraform-model.JPG)
 
 ## Instructions ##  
 
@@ -54,27 +54,27 @@ Within the terraform ec2 module, a call is made to run the required .sh script
 The install.sh script runs the necessacy commads on the created ec2 instance allowing for the automated installation of the needed technologies including these steps:  
 
 Docker is installed and is needed inorder to run kubectl for the connection between kubernetees  
-![docker-install](https://github.com/BFDarian/pet-clinic/blob/documentation/images/docker-install.PNG)  
+![docker-install](https://github.com/BFDarian/pet-clinic/blob/main/images/docker-install.PNG)  
 
 Compose is a seperate tool from Docker, so Docker compose must be installed inorder to docker-compose up and run the application  
-![docker-compose-install](https://github.com/BFDarian/pet-clinic/blob/documentation/images/docker-install.PNG)  
+![docker-compose-install](https://github.com/BFDarian/pet-clinic/blob/main/images/docker-install.PNG)  
 
 The docker compose file to be run will be listening on the identified port  
 
-![docker-compose-yaml](https://github.com/BFDarian/pet-clinic/blob/documentation/images/docker-compose-yaml.PNG)
+![docker-compose-yaml](https://github.com/BFDarian/pet-clinic/blob/main/images/docker-compose-yaml.PNG)
 
 The product of the docker compose while running on localhost  
 
-![docker-compose-up-product](https://github.com/BFDarian/pet-clinic/blob/documentation/images/docker-compose-up-product.PNG)  
+![docker-compose-up-product](https://github.com/BFDarian/pet-clinic/blob/main/images/docker-compose-up-product.PNG)  
 
 kubectl is pulled and installed onto the machine inorder for the jenkins pipeline to be able to execute kubernetes scripts  
-![kubectl-install](https://github.com/BFDarian/pet-clinic/blob/documentation/images/kubectl-install.PNG)
+![kubectl-install](https://github.com/BFDarian/pet-clinic/blob/main/images/kubectl-install.PNG)
 
 Docker and kubectle is then setup   
-![docker-kube-setup](https://github.com/BFDarian/pet-clinic/blob/documentation/images/docker-kube-setup.PNG)  
+![docker-kube-setup](https://github.com/BFDarian/pet-clinic/blob/main/images/docker-kube-setup.PNG)  
 
 Jenkins is then installed onto the ec2 and jenkins user is created with the dependancies with the initialAdminPassword stored in jenkins/.jenkins/secrets/initialAdminPassword  
-![jenkins-setup](https://github.com/BFDarian/pet-clinic/blob/documentation/images/jenkins-setup.PNG)  
+![jenkins-setup](https://github.com/BFDarian/pet-clinic/blob/main/images/jenkins-setup.PNG)  
 
 Jenkins will run the docker compose from the docker compose within the registry pulled down from git, if any changes are made the webhook will activate and update the docker images and run those changed containers  
 
@@ -164,14 +164,14 @@ aws eks --region eu-west-1 update-kubeconfig --name cluster
 
 ## Planning
  Trello board
-![Trello-board](https://github.com/BFDarian/pet-clinic/blob/documentation/images/TrelloBoard.png)
+![Trello-board](https://github.com/BFDarian/pet-clinic/blob/main/images/TrelloBoard.png)
 
 
 ## Risk Assessment
-![Risk Assessment](https://github.com/BFDarian/pet-clinic/blob/documentation/images/Risk_assessment.png)
+![Risk Assessment](https://github.com/BFDarian/pet-clinic/blob/main/images/Risk_assessment.png)
 
 ## Burn Down Chart
-![Burn-Down-Chart](https://github.com/BFDarian/pet-clinic/blob/documentation/images/Burn-Down-Chart.JPG)
+![Burn-Down-Chart](https://github.com/BFDarian/pet-clinic/blob/main/images/Burn-Down-Chart.JPG)
 
 
  ## Contributors
