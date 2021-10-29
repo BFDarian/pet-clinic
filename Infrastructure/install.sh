@@ -73,18 +73,3 @@ until [[ -n "\$(cat  .jenkins/secrets/initialAdminPassword)" ]]; do
 done
 echo "initial admin password: \$(cat .jenkins/secrets/initialAdminPassword)"
 EOF
-
-eksctl create cluster \
---name cluster \
---region eu-west-1 \
---nodegroup-name DemoNodes \
---nodes 2 \
---nodes-min 2 \
---nodes-max 3 \
---node-type t2.small \
---with-oidc \
---ssh-access \
---ssh-public-key id_rsa \
---managed
-
-aws eks --region eu-west-1 update-kubeconfig --name cluster
